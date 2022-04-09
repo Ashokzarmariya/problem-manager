@@ -1,0 +1,12 @@
+.formWidth{
+ width: 80%;
+ padding: 5rem;
+}
+
+@media screen and (min-width: 480px) {
+    .formWidth {
+        
+      width: 500rem;
+      padding: 0%;
+    }
+  }
