@@ -1,6 +1,6 @@
 import { FaLock } from "react-icons/fa";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
+
 
 const LoginCard = ({handleSumbit, handleChange,register, handleCard}) => {
 
@@ -74,7 +74,7 @@ const LoginCard = ({handleSumbit, handleChange,register, handleCard}) => {
             
             </div>
             <div className="flex justify-center">
-              <Button variant="text" onClick={handleCard}>{ register === "Sing In" ? "Sing UP" : "Sing In"}</Button>
+              <Button variant="text" onClick={handleCard}>{ register === "Login" ? "Sign UP" : "Login"}</Button>
             </div>
           </form>
         </div>

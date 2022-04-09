@@ -50,7 +50,7 @@ const SingIn = ({ handleCard }) => {
       <LoginCard
         handleChange={handleChange}
         handleSumbit={handleSubmit}
-        register={"Sing In"}
+        register={"Login"}
         handleCard={handleCard}
       />
     </div>

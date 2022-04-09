@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Navbar from "./components/Navbar/Navbar"
 import Easy from './components/Problems/Easy';
 import Medium from './components/Problems/Medium';
+import AllProblem from './components/Problems/AllProblem';
 
 
 
@@ -18,7 +19,7 @@ function App() {
         <Route path="/hard" element={<Hard />} />
         <Route path="/medium" element={<Medium />} />
         <Route path="/:id" element={<Easy />} />
-        <Route path="/allProblem" element={<Easy />} />
+        <Route path="/allproblem" element={<AllProblem />} />
        
        </Routes>
       

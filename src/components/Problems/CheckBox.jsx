@@ -17,9 +17,9 @@ export default function CheckBox({practice}) {
         checked={checked}
         onChange={handleChange}
         inputProps={{ "aria-label": "controlled" }}
-        
+        disabled={(valid===0 && checked ?"disabled":"") || (valid<0 ? "disabled" : "")}
          />
-      <label htmlFor="">{valid===0 ? "Today": valid<= 0 && checked ? "completed": valid<0 && !checked ? "Missed":  practice  }</label>
+      <label htmlFor="">{valid===0 ? "Today": valid<=0 && checked ? "completed": valid<0 && !checked ? "Missed":  practice  }</label>
     </div>
   );
 }

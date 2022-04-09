@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import AuthContext from "../../contex/AuthContext";
 import { fetchProblems } from "../../redux/problemSlice";
+import Empty from "../Empty/Empty";
 import Loading from "../Loading/Loading";
 
 import ProblemCard from "./ProblemCard";
@@ -12,10 +13,10 @@ const Medium = () => {
   const dispatch = useDispatch();
 
   const store = useSelector((store) => store.problems);
-  const problem = store.problem;
+  const problem = store.problem || [];
   const loading = store.loading;
   const id = "medium";
-
+  console.log("problelm length",problem.length)
   const t2 = Date.now();
   const y = 1000 * 60 * 60 * 24;
 
@@ -47,6 +48,7 @@ const Medium = () => {
 
   return (
     <div>
+      {!loading && problem.length===0  && <Empty/> }
        {loading && <Loading/>}
       {!loading && (
         <div className="container">

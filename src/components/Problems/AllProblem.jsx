@@ -1,48 +1,41 @@
-import React, { useContext, useEffect} from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+
 import AuthContext from '../../contex/AuthContext';
-import { fetchProblems } from '../../redux/problemSlice';
-import Empty from '../Empty/Empty';
+import { fetchAllProblem } from '../../redux/getAllProblemSlice';
+
 import Loading from '../Loading/Loading';
 import ProblemCard from './ProblemCard';
 
-const Easy = () => {
-  const user = useContext(AuthContext);
+const AllProblem = () => {
+    const user = useContext(AuthContext);
   const dispatch = useDispatch();
-  const { id } = useParams()
+  
   const t2 = Date.now();
   const y = 1000 * 60 * 60 * 24;
-  const store = useSelector((store) => store.problems)
-  const problem = store.problem || []
+  const store = useSelector((store) => store.allproblems)
+  const problem = store.allproblem
   const loading=store.loading
-  console.log("store", problem)
- 
+    console.log("store", store)
+    console.log("Loading",loading)
 
   const userId = user ? user._id : null
-  
   console.log("userId",userId)
   useEffect(() => {
-    const data = {
-      id,
-      userId
-    }
-    console.log("data",data)
+  
+
     const getData = async () => {
 
-      dispatch(fetchProblems(data))
+      dispatch(fetchAllProblem(userId))
       
     };
     getData();
     
-  }, [id,userId,dispatch]);
-
-  
+  }, [userId,dispatch]);
   return (
-    <div>
-      {!loading && problem.length === 0 && <Empty />}
-      
-       {loading && <Loading/>}
+      <div>
+          
+      {loading && <Loading/>}
       {!loading && (
         <div className="container">
           {problem.map((item, index) => {
@@ -70,4 +63,4 @@ const Easy = () => {
   )
 }
 
-export default Easy
+export default AllProblem

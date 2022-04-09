@@ -2,6 +2,7 @@ import { useContext, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AuthContext from "../../contex/AuthContext";
 import { fetchProblems } from "../../redux/problemSlice";
+import Empty from "../Empty/Empty";
 import Loading from "../Loading/Loading";
 import ProblemCard from "./ProblemCard";
 
@@ -9,7 +10,7 @@ const Hard = () => {
   const user = useContext(AuthContext);
   const dispatch = useDispatch();
   const store = useSelector((store) => store.problems);
-  const problem = store.problem;
+  const problem = store.problem || [];
   const loading = store.loading;
 
   const t2 = Date.now();
@@ -31,6 +32,7 @@ const Hard = () => {
 
   return (
     <div>
+      {!loading && problem.length===0  && <Empty/> }
       {loading && <Loading/>}
       {!loading && (
         <div className="container">

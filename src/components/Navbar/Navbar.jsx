@@ -107,7 +107,7 @@ const Navbar = () => {
           
           {user && <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={`/${page.toLowerCase()}`}>
+              <Link to={`/${page=="All Problems"?"allproblem": page.toLowerCase()}`}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
