@@ -37,6 +37,7 @@ const SingUp = ({ handleCard }) => {
         }
       );
       const data1 = await res.json();
+      console.log(data1)
       data1.message ? setErr(data1.message) : setErr(null);
       
 
@@ -51,13 +52,21 @@ const SingUp = ({ handleCard }) => {
   };
 !err && window.location.reload();
   return (
-    <div>
-      <LoginCard
+    <div className="">
+      
+      <div>
+        <LoginCard
         handleChange={handleChange}
         handleSumbit={handleSubmit}
         register={"Sing Up"}
         handleCard={handleCard}
-      />
+        />
+        
+      </div>
+      <div className="pl-10 pr-10 ">
+        <h1 className={err!=="true"? "text-center p-4 text-red-600" :""}>{ err!=="true"?err:""}</h1>
+      </div>
+      
     </div>
   );
 };

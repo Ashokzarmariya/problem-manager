@@ -16,7 +16,7 @@ const Easy = () => {
   const store = useSelector((store) => store.problems)
   const problem = store.problem || []
   const loading=store.loading
-  console.log("store", problem)
+  console.log("store easy", problem)
  
 
   const userId = user ? user._id : null
@@ -55,12 +55,15 @@ const Easy = () => {
             
             return (
               <ProblemCard
+                key={item._id}
                 link={item.link}
-                practice1={`${p1} days left`}
-                practice2={`${p2} days left`}
-                practice3={`${p3} days left`}
-                practice4={`${p4} days left`}
-                practice5={`${p5} days left`}
+                id={item._id}
+                isDone={item.isDone}
+                practice1={p1}
+                practice2={p2}
+                practice3={p3}
+                practice4={p4}
+                practice5={p5}
               index={index + 1} />
             )
           })}

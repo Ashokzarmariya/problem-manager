@@ -8,13 +8,15 @@ let headers = new Headers();
 headers.append("Content-Type", "application/json");
 headers.append("authorization", token);
 
+
 export const fetchAllProblem = createAsyncThunk("allproblem/fetchAllProblem",
 
 
     async (userId) => {
         const res = await fetch(`https://problem-manager.herokuapp.com/problems/get/allproblem/${userId}`, {
             method: "GET",
-            headers: headers
+            headers: headers,
+            
         })
         const data = await res.json();
         return data;

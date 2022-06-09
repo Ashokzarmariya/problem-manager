@@ -50,7 +50,7 @@ const Medium = () => {
     <div>
       {!loading && problem.length===0  && <Empty/> }
        {loading && <Loading/>}
-      {!loading && (
+      {problem.length>0 && (
         <div className="container">
           {problem.map((item, index) => {
             const p1 = Math.floor(
@@ -73,11 +73,13 @@ const Medium = () => {
               <ProblemCard
                 key={item._id}
                 link={item.link}
-                practice1={`${p1} days left`}
-                practice2={`${p2} days left`}
-                practice3={`${p3} days left`}
-                practice4={`${p4} days left`}
-                practice5={`${p5} days left`}
+                id={item._id}
+                isDone={item.isDone}
+                practice1={p1 }
+                practice2={p2}
+                practice3={p3}
+                practice4={p4}
+                practice5={p5}
                 index={index + 1}
               />
             );

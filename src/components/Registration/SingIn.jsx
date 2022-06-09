@@ -53,6 +53,9 @@ const SingIn = ({ handleCard }) => {
         register={"Login"}
         handleCard={handleCard}
       />
+      <div className="pl-10 pr-10 ">
+        <h1 className={err!=="true"? "text-center p-4 text-red-600" :""}>{ err!=="true"?err:""}</h1>
+      </div>
     </div>
   );
 };

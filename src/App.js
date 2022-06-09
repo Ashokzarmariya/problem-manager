@@ -7,19 +7,25 @@ import Navbar from "./components/Navbar/Navbar"
 import Easy from './components/Problems/Easy';
 import Medium from './components/Problems/Medium';
 import AllProblem from './components/Problems/AllProblem';
+import About from './components/About/About';
+
+
 
 
 
 function App() {
   return (
     <div className="">
-      <Navbar/>
+      <Navbar />
+  
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hard" element={<Hard />} />
         <Route path="/medium" element={<Medium />} />
         <Route path="/:id" element={<Easy />} />
         <Route path="/allproblem" element={<AllProblem />} />
+        <Route path="/about" element={<About/>}></Route>
+    
        
        </Routes>
       

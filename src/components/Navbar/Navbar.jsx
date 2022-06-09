@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
+
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,9 +15,8 @@ import { useContext, useState } from "react";
 import AuthContext from "../../contex/AuthContext";
 import { Link } from "react-router-dom";
 
-const pages = ["Hard", "Medium", "Easy", "All Problems"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-const dummyImg="https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?b=1&k=20&m=476085198&s=170667a&w=0&h=Ct4e1kIOdCOrEgvsQg4A1qeuQv944pPFORUQcaGw4oI="
+const pages = ["Hard", "Medium", "Easy", "All Problems","About"];
+const settings = ["Profile", "Account", "Logout"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -107,7 +106,7 @@ const Navbar = () => {
           
           {user && <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={`/${page=="All Problems"?"allproblem": page.toLowerCase()}`}>
+              <Link to={`/${page==="All Problems"?"allproblem": page.toLowerCase()}`}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -128,10 +127,7 @@ const Navbar = () => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title={user.username}>
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar
-                    alt="Remy Sharp"
-                    src={dummyImg}
-                  />
+                  <h1 className="text-white">{user.email.split("@")[0]}</h1>
                 </IconButton>
               </Tooltip>
               <Menu

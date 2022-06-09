@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import AuthContext from '../../contex/AuthContext';
 import { fetchAllProblem } from '../../redux/getAllProblemSlice';
+import Empty from '../Empty/Empty';
 
 import Loading from '../Loading/Loading';
 import ProblemCard from './ProblemCard';
@@ -14,7 +15,8 @@ const AllProblem = () => {
   const t2 = Date.now();
   const y = 1000 * 60 * 60 * 24;
   const store = useSelector((store) => store.allproblems)
-  const problem = store.allproblem
+  const problem = store.allproblem || []
+  console.log("problem",problem)
   const loading=store.loading
     console.log("store", store)
     console.log("Loading",loading)
@@ -34,9 +36,9 @@ const AllProblem = () => {
   }, [userId,dispatch]);
   return (
       <div>
-          
+          {!loading && problem.length === 0 && <Empty />}
       {loading && <Loading/>}
-      {!loading && (
+      {!problem.message && !loading && (
         <div className="container">
           {problem.map((item, index) => {
             
@@ -49,11 +51,13 @@ const AllProblem = () => {
             return (
               <ProblemCard
                 link={item.link}
-                practice1={`${p1} days left`}
-                practice2={`${p2} days left`}
-                practice3={`${p3} days left`}
-                practice4={`${p4} days left`}
-                practice5={`${p5} days left`}
+                id={item._id}
+                isDone={item.isDone}
+                practice1={p1}
+                practice2={p2}
+                practice3={p3}
+                practice4={p4}
+                practice5={p5} 
               index={index + 1} />
             )
           })}

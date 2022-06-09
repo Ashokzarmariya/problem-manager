@@ -23,7 +23,7 @@ export const fetchProblems = createAsyncThunk(
       }
     );
     const data1 = await res.json();
-    console.log("slice", data1);
+    //console.log("slice", data1);
 
     return data1;
   }

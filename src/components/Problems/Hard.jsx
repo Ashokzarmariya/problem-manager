@@ -1,4 +1,4 @@
-import { useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AuthContext from "../../contex/AuthContext";
 import { fetchProblems } from "../../redux/problemSlice";
@@ -12,19 +12,20 @@ const Hard = () => {
   const store = useSelector((store) => store.problems);
   const problem = store.problem || [];
   const loading = store.loading;
-
+  console.log("hard", problem);
   const t2 = Date.now();
   const y = 1000 * 60 * 60 * 24;
+ 
 
   const userId = user ? user._id : null;
-
+ 
   useEffect(() => {
     const getData = async () => {
       const data = {
         id: "hard",
         userId,
       };
-
+      
       dispatch(fetchProblems(data));
     };
     getData();
@@ -32,8 +33,8 @@ const Hard = () => {
 
   return (
     <div>
-      {!loading && problem.length===0  && <Empty/> }
-      {loading && <Loading/>}
+      {!loading && problem.length === 0 && <Empty />}
+      {loading && <Loading />}
       {!loading && (
         <div className="container">
           {problem.map((item, index) => {
@@ -57,12 +58,15 @@ const Hard = () => {
               <ProblemCard
                 key={item._id}
                 link={item.link}
-                practice1={`${p1} days left`}
-                practice2={`${p2} days left`}
-                practice3={`${p3} days left`}
-                practice4={`${p4} days left`}
-                practice5={`${p5} days left`}
+                id={item._id}
+                isDone={item.isDone}
+                practice1={p1}
+                practice2={p2}
+                practice3={p3}
+                practice4={p4}
+                practice5={p5}
                 index={index + 1}
+                
               />
             );
           })}
